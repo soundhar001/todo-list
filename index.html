@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+
+<body>
+    <label for="fname">Todo List:</label><br>
+    <input type="text" id="fname" name="fname">
+    <button id="btn">Add</button>
+    <button id="RemoveBtn">Remove</button>
+    <ol id="ol"></ol>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("fname").focus();
+        let button = document.getElementById("btn");
+        var olElement = document.getElementById("ol");
+        let RemoveButton = document.getElementById("RemoveBtn");
+        button.addEventListener("click", function() {
+            let inputVal = document.getElementById("fname").value;
+            let liElement = document.createElement("li");
+            if (inputVal.length > 0) {
+                liElement.innerHTML = inputVal;
+                olElement.appendChild(liElement);
+                document.getElementById("fname").focus();
+                document.getElementById("fname").value = "";
+            } else {
+                alert("Input field is required");
+            }
+        });
+        RemoveButton.addEventListener("click", function() {
+            olElement.removeChild(olElement.lastElementChild);
+        });
+    });
+</script>
+
+</html>
